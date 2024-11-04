@@ -26,8 +26,8 @@ public class ScoreTableModel extends AbstractTableModel implements YahtzeeGame.G
             rows.add(getComboRow(game, combo));
         }
 
-        rows.add(new Row("Bonus Yahtzees", RowStyle.COMBO, game::getBonusYahtzeeCount));
-        rows.add(new Row("Bonus Yahtzee score", RowStyle.COMBO, game::getBonusYahtzeeScore));
+        rows.add(new Row("Bonus Yahtzees", RowStyle.TOTAL, game::getBonusYahtzeeCount));
+        rows.add(new Row("Bonus Yahtzee score", RowStyle.TOTAL, game::getBonusYahtzeeScore));
         rows.add(new Row("Lower section score", RowStyle.TOTAL, game::getLowerSectionScore));
         rows.add(new Row("Grand total", RowStyle.TOTAL, game::getPlayerScore));
 

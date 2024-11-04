@@ -101,11 +101,13 @@ public class Main {
             @Override
             public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
                 Component result = super.prepareRenderer(renderer, row, column);
+
                 if (row == -1 || column == -1) {
                     return result;
                 }
 
                 result.setFont(regularFont);
+                result.setEnabled(true);
 
                 ScoreTableModel.Row modelRow = ((ScoreTableModel) getModel()).getRow(row);
                 Object o = modelRow.getValue(0);
@@ -117,9 +119,11 @@ public class Main {
                     if (column == 0 && combo != null && game.getPlayerMoves(game.getWhoseTurn()).containsKey(combo)) {
                         // Current player has already played this combo
                         result.setFont(strikethroughFont);
+                        result.setEnabled(false);
                     } else if (column > 0 && combo != null && game.getPlayerMoves(column - 1).containsKey(combo)) {
                         // Player for this column has already locked in this combo.
-                        result.setFont(boldFont);
+                        result.setFont(regularFont);
+                        result.setEnabled(false);
                     }
                 }
 
